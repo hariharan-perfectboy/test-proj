@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amazon — Simple Home (Demo)</title>
+  <style>
+    :root{
+      --bg:#131921;         /* header bg */
+      --bg2:#232f3e;        /* navbar bg */
+      --accent:#febd69;     /* amazon-ish yellow */
+      --accent-dark:#f3a847;
+      --link:#007185;       /* teal-ish link */
+      --card:#fff;
+      --text:#111;
+      --muted:#e3e6e6;      /* page bg */
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;background:var(--muted);color:var(--text)}
+
+    /* Header */
+    .header{background:var(--bg);color:#fff;padding:8px 12px;display:grid;grid-template-columns:170px 1fr auto auto auto 60px;gap:10px;align-items:center}
+    .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:22px;white-space:nowrap}
+    .logo span{color:var(--accent)}
+    .deliver{font-size:12px;line-height:1.1;opacity:.9}
+    .deliver strong{display:block;font-size:13px;color:#fff}
+    .search{display:flex;align-items:stretch}
+    .search select{padding:10px;border:0;border-top-left-radius:6px;border-bottom-left-radius:6px;background:#f3f3f3}
+    .search input{flex:1;padding:10px;border:0}
+    .search button{border:0;padding:10px 14px;background:var(--accent);border-top-right-radius:6px;border-bottom-right-radius:6px;cursor:pointer}
+    .search button:hover{background:var(--accent-dark)}
+    .mini{font-size:12px}
+    .bold{font-weight:700;font-size:13px}
+    .cart{display:flex;align-items:center;gap:6px;font-weight:700}
+
+    /* Nav */
+    .nav{background:var(--bg2);color:#fff;display:flex;gap:14px;align-items:center;padding:8px 12px;overflow:auto}
+    .nav a{color:#fff;text-decoration:none;font-size:14px;white-space:nowrap}
+    .nav a:hover{text-decoration:underline}
+
+    /* Hero */
+    .hero{position:relative;height:280px;background:linear-gradient(180deg,#2e466e 0%, #415a77 40%, #e3e6e6 100%);display:flex;align-items:flex-end;justify-content:center}
+    .hero .note{background:#fff;margin:0 10px 10px;border-radius:6px;padding:10px 14px;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+
+    /* Grid */
+    .container{max-width:1300px;margin:auto;padding:16px}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{background:var(--card);border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.06);padding:16px;display:flex;flex-direction:column}
+    .card h3{margin:0 0 10px;font-size:18px}
+    .card .img{height:200px;background:#f7f7f7;border-radius:6px;display:flex;align-items:center;justify-content:center;border:1px solid #eee}
+    .card .img span{opacity:.6}
+    .card a{margin-top:auto;color:var(--link);text-decoration:none}
+    .card a:hover{text-decoration:underline}
+
+    /* Footer */
+    .backtop{background:#37475a;color:#fff;text-align:center;padding:12px;text-decoration:none;display:block}
+    footer{background:#232f3e;color:#ddd}
+    .foot-grid{max-width:1100px;margin:auto;padding:28px 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    footer h4{color:#fff;margin:0 0 10px}
+    footer a{display:block;color:#ddd;text-decoration:none;font-size:14px;margin:6px 0}
+    footer a:hover{text-decoration:underline}
+    .copy{background:#131921;color:#ccc;text-align:center;padding:14px;font-size:13px}
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .header{grid-template-columns:140px 1fr auto auto 60px}
+      .grid{grid-template-columns:repeat(3,1fr)}
+    }
+    @media (max-width: 768px){
+      .header{grid-template-columns:120px 1fr 60px}
+      .deliver,.mini,.bold{display:none}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .hero{height:220px}
+    }
+    @media (max-width: 520px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo" aria-label="Amazon">
+      <span>amazon</span>.in
+    </div>
+    <div class="deliver">
+      Deliver to
+      <strong>India</strong>
+    </div>
+    <form class="search" role="search" aria-label="Site search" onsubmit="event.preventDefault(); alert('Search submitted! (demo)')">
+      <select aria-label="Search category">
+        <option>All</option>
+        <option>Books</option>
+        <option>Electronics</option>
+        <option>Fashion</option>
+      </select>
+      <input type="search" placeholder="Search Amazon.in" aria-label="Search" />
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+    <div class="mini">
+      Hello, sign in<br><span class="bold">Account & Lists ▾</span>
+    </div>
+    <div class="mini">
+      Returns<br><span class="bold">& Orders</span>
+    </div>
+    <div class="cart" aria-label="Cart">🛒 <span>Cart</span></div>
+  </header>
+
+  <!-- Nav -->
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#">☰ All</a>
+    <a href="#">Fresh</a>
+    <a href="#">Amazon miniTV</a>
+    <a href="#">Sell</a>
+    <a href="#">Best Sellers</a>
+    <a href="#">Mobiles</a>
+    <a href="#">Today's Deals</a>
+    <a href="#">Electronics</a>
+    <a href="#">Customer Service</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" role="img" aria-label="Promotional banner">
+    <p class="note">You are on a demo page. Shop the real deals on Amazon.in.</p>
+  </section>
+
+  <!-- Content -->
+  <main class="container" id="content">
+    <section class="grid" aria-label="Shop by category">
+      <article class="card">
+        <h3>Up to 50% off | Electronics</h3>
+        <div class="img"><span>Image placeholder</span></div>
+        <a href="#">See more</a>
+      </article>
+      <article class="card">
+        <h3>Upgrade your home | Appliances</h3>
+        <div class="img"><span>Image placeholder</span></div>
+        <a href="#">See more</a>
+      </article>
+      <article class="card">
+        <h3>Revamp your wardrobe</h3>
+        <div class="img"><span>Image placeholder</span></div>
+        <a href="#">Explore fashion</a>
+      </article>
+      <article class="card">
+        <h3>Top picks | Books</h3>
+        <div class="img"><span>Image placeholder</span></div>
+        <a href="#">Discover reads</a>
+      </article>
+    </section>
+  </main>
+
+  <a class="backtop" href="#top">Back to top</a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <h4>Get to Know Us</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Press Releases</a>
+      </div>
+      <div>
+        <h4>Connect with Us</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+      </div>
+      <div>
+        <h4>Make Money with Us</h4>
+        <a href="#">Sell on Amazon</a>
+        <a href="#">Advertise Your Products</a>
+        <a href="#">Fulfilment by Amazon</a>
+      </div>
+      <div>
+        <h4>Let Us Help You</h4>
+        <a href="#">Your Account</a>
+        <a href="#">Returns Centre</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+    <div class="copy">© 2025 Demo layout inspired by Amazon.in</div>
+  </footer>
+</body>
+</html>
+
